@@ -15,7 +15,7 @@
 <main>
   <h1>Svelte-Paginator!</h1>
 
-  <Paginator endpoint={loadLetters} let:items perPage={5} numPageLinks=11>
+  <Paginator endpoint={loadLetters} let:items perPage={4} numPageLinks={11}>
     {#if items === null}
       Loading...
     {:else}
