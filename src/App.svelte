@@ -1,7 +1,7 @@
 <script>
  import Paginator from 'svelte-paginator'
 
- let letters = '1234567890abcdefghijklmnopqrstuvwxyz'.split('')
+ let letters = '1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('')
  const loadLetters = (page=1, perPage=10) => {
    const start = perPage * (page-1)
    const end = start + perPage
@@ -15,7 +15,7 @@
 <main>
   <h1>Svelte-Paginator!</h1>
 
-  <Paginator endpoint={loadLetters} let:items perPage={5}>
+  <Paginator endpoint={loadLetters} let:items perPage={5} numPageLinks=11>
     {#if items === null}
       Loading...
     {:else}
