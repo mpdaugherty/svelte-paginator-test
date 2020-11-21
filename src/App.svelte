@@ -18,7 +18,7 @@
 <div class="main">
   <h1>Svelte-Paginator!</h1>
 
-  <Paginator endpoint={loadLetters} perPage={4} numPageLinks={12} let:items let:loading>
+  <Paginator loadItems={loadLetters} perPage={4} numPageLinks={12} let:items let:loading>
     <div>
       {#if loading}
         Loading...
@@ -39,11 +39,11 @@
     <span>&laquo;With Bootstrap Class Overrides&raquo;</span>
   </h1>
 
-  <Paginator endpoint={loadLetters}
-                      let:items
+  <Paginator loadItems={loadLetters}
+             let:items
              let:loading
              perPage={4}
-                      numPageLinks={5}
+             numPageLinks={5}
              class_button="btn btn-outline-secondary"
              class_current_page="btn btn-secondary"
              class_button_group="btn-group">
