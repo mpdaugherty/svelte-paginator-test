@@ -11,6 +11,12 @@
      numItems: letters.length
    }
  }
+
+ let reset = null
+ const switchToGreek = () => {
+   letters = 'αβγδεζηθικλμνξοπρστυφχψωΑΒΓΔΕΖΗΘΙΚΛΜΝΞΟΠΡΣΤΥΦΧΨΩ'
+   reset()
+ }
 </script>
 
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
@@ -18,7 +24,7 @@
 <div class="main">
   <h1>Svelte-Paginator!</h1>
 
-  <Paginator loadItems={loadLetters} perPage={4} numPageLinks={12} let:items let:loading>
+  <Paginator loadItems={loadLetters} perPage={4} numPageLinks={12} currentPage={2} let:items let:loading bind:reset>
     <div>
       {#if loading}
         Loading...
@@ -33,6 +39,7 @@
   </Paginator>
 
   <br/>
+  <button on:click={switchToGreek}>Switch to Greek</button>
 
   <h1>
     Svelte-Paginator!
