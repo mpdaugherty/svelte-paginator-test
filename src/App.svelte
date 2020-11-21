@@ -2,7 +2,8 @@
  import Paginator from 'svelte-paginator'
 
  let letters = '1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('')
- const loadLetters = (page=1, perPage=10) => {
+ const loadLetters = async (page=1, perPage=10) => {
+   await new Promise(resolve => setTimeout(resolve, 1500))
    const start = perPage * (page-1)
    const end = start + perPage
    return {
@@ -17,16 +18,18 @@
 <main>
   <h1>Svelte-Paginator!</h1>
 
-  <Paginator endpoint={loadLetters} let:items perPage={4} numPageLinks={12}>
-    {#if items === null}
-      Loading...
-    {:else}
-      <div>
+  <Paginator endpoint={loadLetters} perPage={4} numPageLinks={12} let:items let:loading>
+    <div>
+      {#if loading}
+        Loading...
+      {:else}
         {#each items as letter}
           {letter}&nbsp;
+        {:else}
+          None
         {/each}
-      </div>
-    {/if}
+      {/if}
+    </div>
   </Paginator>
 
   <br/>
@@ -37,20 +40,24 @@
   </h1>
 
   <Paginator endpoint={loadLetters}
-                      let:items perPage={4}
-                      numPageLinks={12}
+                      let:items
+             let:loading
+             perPage={4}
+                      numPageLinks={5}
              class_button="btn btn-outline-secondary"
              class_current_page="btn btn-secondary"
              class_button_group="btn-group">
-    {#if items === null}
-      Loading...
-    {:else}
-      <div>
+    <div class="my-3">
+      {#if loading}
+        Loading...
+      {:else}
         {#each items as letter}
           {letter}&nbsp;
+        {:else}
+          None
         {/each}
-      </div>
-    {/if}
+      {/if}
+    </div>
   </Paginator>
 </main>
 
