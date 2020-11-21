@@ -15,7 +15,7 @@
 
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 
-<main>
+<div class="main">
   <h1>Svelte-Paginator!</h1>
 
   <Paginator endpoint={loadLetters} perPage={4} numPageLinks={12} let:items let:loading>
@@ -59,14 +59,11 @@
       {/if}
     </div>
   </Paginator>
-</main>
+</div>
 
 <style>
- main {
+ .main {
    text-align: center;
-   padding: 1em;
-   max-width: 240px;
-   margin: 0 auto;
  }
 
  h1 {
